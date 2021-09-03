@@ -11,33 +11,32 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,map<int,int>&m)
+    unordered_map<int,int> m; vector<int> result;
+    void traverse(TreeNode* root)
     {
-        if(!root)
-            return;
-        inorder(root->left,m);
+        if(root==NULL) return;
         m[root->val]++;
-        inorder(root->right,m);
+        traverse(root->left);
+        traverse(root->right);
     }
     vector<int> findMode(TreeNode* root) {
-        map<int,int>m;
-        vector<int>ans;
-        inorder(root,m);
-        int max=INT_MIN;
-        for(auto it:m)
+        traverse(root);
+        int max=INT_MIN; int key;
+        auto it=m.begin();
+        while(it!=m.end())
         {
-            if(it.second>max)
-                max=it.second;
-        }
-        for(auto it:m)
-        {
-            if(it.second==max)
-            {
-                ans.push_back(it.first);
+            if(it->second>max){ 
+                max=it->second; key=it->first;
             }
+            it++;
         }
-        return ans;
-        
-
+        result.push_back(key);
+        it=m.begin();
+        while(it!=m.end())
+        {
+            if(it->second==max and it->first!=key) result.push_back(it->first);
+            it++;
+        }
+        return result;
     }
 };
