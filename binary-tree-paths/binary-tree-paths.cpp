@@ -11,23 +11,15 @@
  */
 class Solution {
 public:
-    vector<string> result; 
-    void traverse(TreeNode* root,string temp)
-    {
+    vector<string> result;
+    void traverse(TreeNode* root,string temp){
         if(root==NULL) return;
-        if(root->left==NULL and root->right==NULL)
-        {
+        if(root->left==NULL and root->right==NULL){
             result.push_back(temp+"->"+to_string(root->val));
             return;
         }
-        if(root->left!=NULL)
-        {
-            traverse(root->left,temp+"->"+to_string(root->val));
-        }
-        if(root->right!=NULL)
-        {
-            traverse(root->right,temp+"->"+to_string(root->val));
-        }
+        if(root->left!=NULL) traverse(root->left,temp+"->"+to_string(root->val));
+        if(root->right!=NULL) traverse(root->right,temp+"->"+to_string(root->val));
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         traverse(root,""); int pos=0;
