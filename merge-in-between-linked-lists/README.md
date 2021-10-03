@@ -1,3 +1,4 @@
+[Discussion Post (created on 4/9/2021 at 1:11)](https://leetcode.com/problems/merge-in-between-linked-lists/discuss/1501743/Cpp-easy-to-understand-soln)  
 <h2>1669. Merge In Between Linked Lists</h2><h3>Medium</h3><hr><div><p>You are given two linked lists: <code>list1</code> and <code>list2</code> of sizes <code>n</code> and <code>m</code> respectively.</p>
 
 <p>Remove <code>list1</code>'s nodes from the <code>a<sup>th</sup></code> node to the <code>b<sup>th</sup></code> node, and put <code>list2</code> in their place.</p>
