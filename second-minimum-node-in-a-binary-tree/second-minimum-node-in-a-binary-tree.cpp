@@ -13,7 +13,7 @@ class Solution {
 public:
     map<int,int> m;
     void traverse(TreeNode* root){
-        if(root==NULL) return;
+        if(!root) return;
         traverse(root->left);
         m[root->val]++;
         traverse(root->right);
