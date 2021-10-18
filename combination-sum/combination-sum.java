@@ -1,8 +1,8 @@
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if(candidates==null) return null;
-        List<List<Integer>> result=new ArrayList<>();
-        finalCombinations(candidates,0,target,new ArrayList<>(),result);
+        List<List<Integer>> result=new ArrayList();
+        finalCombinations(candidates,0,target,new ArrayList<Integer>(),result);
         return result;
     }
     public void finalCombinations(int[] candidates,int index,int target,List<Integer> current,List<List<Integer>> result){
