@@ -16,18 +16,16 @@ class Solution {
         while(l1!=null || l2!=null){
             int l1_val=(l1!=null) ? l1.val : 0;
             int l2_val=(l2!=null) ? l2.val : 0;
-            int current_sum=l1_val+l2_val+carry;
-            carry=current_sum/10;
-            int last_digit=current_sum%10;
-            ListNode new_node=new ListNode(last_digit);
-            l3.next=new_node;
+            int sum=l1_val+l2_val+carry;
+            carry=sum/10;
+            int last_digit=sum%10;
+            l3.next=new ListNode(last_digit);
             l3=l3.next;
             if(l1!=null) l1=l1.next;
             if(l2!=null) l2=l2.next;
         }
         if(carry>0){
-            ListNode new_node=new ListNode(carry);
-            l3.next=new_node;
+            l3.next=new ListNode(carry);
             l3=l3.next;
         }
         return dummy_head.next;
