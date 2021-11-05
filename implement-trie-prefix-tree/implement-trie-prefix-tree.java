@@ -1,28 +1,28 @@
 class Trie {
-    static class Trienode{
-        char val; int count; boolean endsHere; Trienode[] child;
-        Trienode(){
-            child=new Trienode[26];
+    static class TrieNode{
+        boolean endsHere; TrieNode[] child;
+        TrieNode(){
+            child=new TrieNode[26];
             endsHere=false;
         }
     }
-    final private Trienode root;
+    final private TrieNode root;
     public Trie() {
-        root=new Trienode();
+        root=new TrieNode();
     }
     
     public void insert(String word) {
-        Trienode curr=root; 
+        TrieNode curr=root;
         for(int i=0;i<word.length();i++){
             char ch=word.charAt(i);
-            if(curr.child[ch-'a']==null) curr.child[ch-'a']=new Trienode();
+            if(curr.child[ch-'a']==null) curr.child[ch-'a']=new TrieNode();
             curr=curr.child[ch-'a'];
         }
         curr.endsHere=true;
     }
     
     public boolean search(String word) {
-        Trienode curr=root;
+        TrieNode curr=root;
         for(int i=0;i<word.length();i++){
             char ch=word.charAt(i);
             if(curr.child[ch-'a']==null) return false;
@@ -32,7 +32,7 @@ class Trie {
     }
     
     public boolean startsWith(String prefix) {
-        Trienode curr=root; 
+        TrieNode curr=root;
         for(int i=0;i<prefix.length();i++){
             char ch=prefix.charAt(i);
             if(curr.child[ch-'a']==null) return false;
