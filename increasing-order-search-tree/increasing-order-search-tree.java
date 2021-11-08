@@ -28,7 +28,7 @@ class Solution {
     public TreeNode makeTree(List<TreeNode> list){
         TreeNode root=list.get(0);
         TreeNode curr=root;
-        if(list.size()>1){
+        if(list.size()>0){
             for(int i=1;i<list.size();i++){
                 curr.right=list.get(i);
                 curr=curr.right;
