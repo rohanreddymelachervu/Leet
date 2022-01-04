@@ -14,9 +14,7 @@
  * }
  */
 class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result=new ArrayList();
-        if(root==null) return result;
+    public List<List<Integer>> BFS(TreeNode root,List<List<Integer>> result){
         Queue<TreeNode> q=new LinkedList<TreeNode>();
         q.add(root);
         while(!q.isEmpty()){
@@ -31,5 +29,10 @@ class Solution {
             result.add(temp);
         }
         return result;
+    }
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result=new ArrayList();
+        if(root==null) return result;
+        return BFS(root,result);
     }
 }
