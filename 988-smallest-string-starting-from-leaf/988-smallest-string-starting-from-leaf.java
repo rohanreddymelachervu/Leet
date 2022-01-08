@@ -16,13 +16,14 @@
 class Solution {
     String ans="~";
     public String smallestFromLeaf(TreeNode root) {
+        if(root==null) return "";
         dfs(root,new StringBuilder());
         return ans;
     }
     public void dfs(TreeNode root,StringBuilder sb){
         if(root==null) return;
         sb.append((char)('a'+root.val));
-        if(root.left==null && root.right==null){
+        if(root.right==null && root.left==null){
             sb.reverse();
             String S=sb.toString();
             sb.reverse();
