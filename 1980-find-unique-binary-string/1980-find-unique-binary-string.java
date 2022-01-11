@@ -1,12 +1,12 @@
 class Solution {
-    String ans=""; boolean ok=false;
+    String ans=""; int n;
     HashSet<String> u=new HashSet<String>();
-    int n=0;
+    boolean ok=false;
     public void helper(int idx,String tmp){
         if(ok) return;
         if(idx==n){
             if(!u.contains(tmp)){
-                ans=tmp; ok=true;
+                ok=true; ans=tmp;
             }
             return;
         }
