@@ -1,20 +1,19 @@
 class Solution {
     public List<List<String>> partition(String s) {
-        List<List<String>> result=new ArrayList<List<String>>();
-        List<String> path=new ArrayList<String>();
-        func(0,s,path,result);
+        List<List<String>> result=new ArrayList<>();
+        findCombs(0,s,new ArrayList<>(),result);
         return result;
     }
-    public void func(int index,String s,List<String> path,List<List<String>> result){
+    public void findCombs(int index,String s,List<String> current,List<List<String>> result){
         if(index==s.length()){
-            result.add(new ArrayList<String>(path));
+            result.add(new ArrayList<String>(current));
             return;
         }
         for(int i=index;i<s.length();i++){
             if(isPalindrome(s,index,i)){
-                path.add(s.substring(index,i+1));
-                func(i+1,s,path,result);
-                path.remove(path.size()-1);
+                current.add(s.substring(index,i+1));
+                findCombs(i+1,s,current,result);
+                current.remove(current.size()-1);
             }
         }
     }
