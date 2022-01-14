@@ -28,6 +28,6 @@ class Solution {
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
         traverse(root1,list1);
         traverse(root2,list2);
-        return (list1.equals(list2)) ? true : false;
+        return list1.equals(list2);
     }
 }
