@@ -6,7 +6,7 @@ class Solution:
         mapping=['0','1','abc','def','ghi','jkl','mno','pqrs','tuv','wxyz']
         self.findCombinations(result,digits,mapping,0,'')
         return result
-    def findCombinations(self,result,digits,mapping,index,current)->None:
+    def findCombinations(self,result:List[str],digits:str,mapping:List[str],index:int,current:str)->None:
         if index==len(digits):
             result.append(current)
             return
