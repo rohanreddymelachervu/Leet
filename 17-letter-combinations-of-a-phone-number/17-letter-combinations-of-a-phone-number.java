@@ -14,18 +14,17 @@ class Solution {
             "tuv",
             "wxyz"
         };
-        letterCombinations(result,digits,"",0,mapping);
+        findCombinations(result,digits,mapping,"",0);
         return result;
     }
-    public void letterCombinations(List<String> result,String digits,String current,int index,
-                                  String[] mapping){
-        if(digits.length()==index){
+    public void findCombinations(List<String> result,String digits,String[] mapping,String current,int index){
+        if(index==digits.length()){
             result.add(current);
             return;
         }
         String letters=mapping[digits.charAt(index)-'0'];
         for(int i=0;i<letters.length();i++){
-            letterCombinations(result,digits,current+letters.charAt(i),index+1,mapping);
+            findCombinations(result,digits,mapping,current+letters.charAt(i),index+1);
         }
     }
 }
