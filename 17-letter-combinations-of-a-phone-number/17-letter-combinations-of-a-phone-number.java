@@ -10,7 +10,7 @@ class Solution {
     }
     public void findCombinations(List<String> result,HashMap<Integer,String> map,String digits,String current,
                                 int index){
-        if(current.length()==digits.length()){
+        if(index==digits.length()){
             result.add(current);
             return;
         }
