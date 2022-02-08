@@ -1,30 +1,22 @@
 class Solution {
     public List<String> letterCombinations(String digits) {
         List<String> result=new ArrayList<>();
-        if(digits==null || digits.length()==0) return result;
-        String[] mapping={
-            "0",
-            "1",
-            "abc",
-            "def",
-            "ghi",
-            "jkl",
-            "mno",
-            "pqrs",
-            "tuv",
-            "wxyz"
-        };
-        findCombinations(result,digits,mapping,"",0);
+        if(digits.length()==0) return result;
+        HashMap<Integer,String> map=new HashMap<>();
+        map.put(0,"0"); map.put(1,"1"); map.put(2,"abc"); map.put(3,"def");  map.put(4,"ghi");
+        map.put(5,"jkl"); map.put(6,"mno"); map.put(7,"pqrs"); map.put(8,"tuv"); map.put(9,"wxyz");
+        findCombinations(result,map,digits,"",0);
         return result;
     }
-    public void findCombinations(List<String> result,String digits,String[] mapping,String current,int index){
-        if(index==digits.length()){
+    public void findCombinations(List<String> result,HashMap<Integer,String> map,String digits,String current,
+                                int index){
+        if(current.length()==digits.length()){
             result.add(current);
             return;
         }
-        String letters=mapping[digits.charAt(index)-'0'];
+        String letters=map.get(digits.charAt(index)-'0');
         for(int i=0;i<letters.length();i++){
-            findCombinations(result,digits,mapping,current+letters.charAt(i),index+1);
+            findCombinations(result,map,digits,current+letters.charAt(i),index+1);
         }
     }
 }
