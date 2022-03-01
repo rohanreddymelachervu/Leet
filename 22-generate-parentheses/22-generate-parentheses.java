@@ -1,11 +1,10 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> result=new ArrayList<>();
-        StringBuilder sb=new StringBuilder();
-        backtrack(result,n,sb,0,0);
+        backtrack(result,n,new StringBuilder(),0,0);
         return result;
     }
-    public void backtrack(List<String> result,int n,StringBuilder sb,int open,int close){
+    private void backtrack(List<String> result,int n,StringBuilder sb,int open,int close){
         if((open==n && close==n)){
             result.add(sb.toString());
             return;
