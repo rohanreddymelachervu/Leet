@@ -1,6 +1,9 @@
 class MyStack {
-    private Queue<Integer> q=new LinkedList<>();
-        
+    private Queue<Integer> q;
+    public MyStack() {
+        this.q=new LinkedList<Integer>();
+    }
+    
     public void push(int x) {
         q.add(x);
         for(int i=1;i<q.size();i++){
