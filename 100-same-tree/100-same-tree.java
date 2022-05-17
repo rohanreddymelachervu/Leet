@@ -14,29 +14,10 @@
  * }
  */
 class Solution {
-    boolean isSame=true;
-    public void traverse(TreeNode p,TreeNode q){
-        if(p==null && q==null) return;
-        if(p==null && q!=null){
-            isSame=false; return;
-        } if(p!=null && q==null){
-            isSame=false; return;
-        }
-        if(!(p.left!=null ^ q.left!=null)) traverse(p.left,q.left);
-        else{
-            isSame=false; return;
-        }
-        if(!(p.right!=null ^ q.right!=null)) traverse(p.right,q.right);
-        else{
-            isSame=false; return;
-        }
-        if(p.val!=q.val){
-            isSame=false; return;
-        }
-    }
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        if(p==null && q==null) return true;
-        traverse(p,q);
-        return isSame;
+        if (p == null && q == null) return true;
+        if (p == null || q == null) return false;
+        if (p.val != q.val) return false;
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right); 
     }
 }
