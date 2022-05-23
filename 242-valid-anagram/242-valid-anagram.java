@@ -4,10 +4,6 @@ class Solution {
         char[] tArray = t.toCharArray();
         Arrays.sort(sArray);
         Arrays.sort(tArray);
-        if(sArray.length!=tArray.length) return false;
-        for(int i=0;i<tArray.length;i++){
-            if(tArray[i]!=sArray[i]) return false;
-        }
-        return true;
+        return Arrays.equals(sArray,tArray);
     }
 }
