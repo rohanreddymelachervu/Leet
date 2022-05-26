@@ -6,12 +6,12 @@ class Solution {
             char[] characters=current.toCharArray();
             Arrays.sort(characters);
             String sorted=new String(characters);
-            if(!map.containsKey(sorted)){
-                map.put(sorted,new ArrayList<>());
-            }
+            if(!map.containsKey(sorted)) map.put(sorted,new ArrayList<>());
             map.get(sorted).add(current);
         }
-        groupedAnagrams.addAll(map.values());
+        for(List<String> list : map.values()){
+            groupedAnagrams.add(list);
+        }
         return groupedAnagrams;
     }
 }
