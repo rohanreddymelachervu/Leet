@@ -1,17 +1,15 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> groupedAnagrams=new ArrayList<>();
         HashMap<String,List<String>> map=new HashMap<>();
-        for(String current : strs){
-            char[] characters=current.toCharArray();
-            Arrays.sort(characters);
-            String sorted=new String(characters);
-            if(!map.containsKey(sorted)) map.put(sorted,new ArrayList<>());
-            map.get(sorted).add(current);
+        List<List<String>> result=new ArrayList<>();
+        for(String s : strs){
+            char[] charArr=s.toCharArray();
+            Arrays.sort(charArr);
+            String finalStr=new String(charArr);
+            if(!map.containsKey(finalStr)) map.put(finalStr,new ArrayList<String>());
+            map.get(finalStr).add(s);
         }
-        for(List<String> list : map.values()){
-            groupedAnagrams.add(list);
-        }
-        return groupedAnagrams;
+        result.addAll(map.values());
+        return result;
     }
 }
