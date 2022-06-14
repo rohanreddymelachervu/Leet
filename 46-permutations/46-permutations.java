@@ -1,22 +1,22 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result=new ArrayList<>();
-        boolean[] visited=new boolean[nums.length];
-        findPermutations(result,nums,visited,new ArrayList<>());
+        if(nums.length==0 || nums==null) return result;
+        backtrack(result,nums,new ArrayList<>(),new boolean[nums.length]);
         return result;
     }
-    public void findPermutations(List<List<Integer>> result,int[] nums,boolean[] visited,List<Integer> current){
+    private static void backtrack(List<List<Integer>> result,int[] nums,List<Integer> current,boolean[] visited){
         if(current.size()==nums.length){
             result.add(new ArrayList<>(current));
             return;
         }
         for(int i=0;i<nums.length;i++){
             if(!visited[i]){
-                visited[i]=true;
                 current.add(nums[i]);
-                findPermutations(result,nums,visited,current);
-                visited[i]=false;
+                visited[i]=true;
+                backtrack(result,nums,current,visited);
                 current.remove(current.size()-1);
+                visited[i]=false;
             }
         }
     }
