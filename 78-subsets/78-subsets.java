@@ -9,7 +9,6 @@ class Solution {
             result.add(new ArrayList<>(current));
             return;
         }
-        // include nums[i]
         current.add(nums[index]);
         backtrack(result,nums,current,index+1);
         current.remove(current.size()-1);
