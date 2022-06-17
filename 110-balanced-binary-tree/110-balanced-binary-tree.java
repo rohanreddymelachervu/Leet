@@ -17,8 +17,7 @@ class Solution {
     boolean bal=true;
     private int dfs(TreeNode root){
         if(root==null) return -1;
-        int left=dfs(root.left)+1;
-        int right=dfs(root.right)+1;
+        int left=dfs(root.left)+1, right=dfs(root.right)+1;
         if(Math.abs(right-left)>1) bal=false;
         return Math.max(left,right);
     }
