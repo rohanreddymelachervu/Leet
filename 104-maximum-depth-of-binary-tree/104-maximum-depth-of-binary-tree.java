@@ -19,7 +19,6 @@ class Solution {
         int left=0, right=0;
         left=maxDepth(root.left)+1;
         right=maxDepth(root.right)+1;
-        if(root.right==null && root.left==null) return 1;
         return Math.max(left,right);
     }
 }
