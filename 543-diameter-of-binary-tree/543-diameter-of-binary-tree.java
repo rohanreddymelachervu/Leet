@@ -17,7 +17,8 @@ class Solution {
     int max=0;
     private int dfs(TreeNode root){
         if(root==null) return -1;
-        int left=dfs(root.left), right=dfs(root.right);
+        int left=dfs(root.left);
+        int right=dfs(root.right);
         max=Math.max(left+right+2,max);
         return 1+Math.max(left,right);
     }
