@@ -14,15 +14,16 @@
  * }
  */
 class Solution {
-    boolean bal=true;
+    boolean isBal=true;
     private int dfs(TreeNode root){
         if(root==null) return -1;
-        int left=dfs(root.left)+1, right=dfs(root.right)+1;
-        if(Math.abs(right-left)>1) bal=false;
+        int left=dfs(root.left)+1;
+        int right=dfs(root.right)+1;
+        if(Math.abs(right-left)>1) isBal=false;
         return Math.max(left,right);
     }
     public boolean isBalanced(TreeNode root) {
-        dfs(root);
-        return bal;
+        int g=dfs(root);
+        return isBal;
     }
 }
