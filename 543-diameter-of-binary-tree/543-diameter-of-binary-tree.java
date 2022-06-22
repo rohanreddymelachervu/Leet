@@ -19,11 +19,11 @@ class Solution {
         if(root==null) return -1;
         int left=dfs(root.left)+1;
         int right=dfs(root.right)+1;
-        max=Math.max(max,left+right+2);
+        max=Math.max(max,left+right);
         return Math.max(left,right);
     }
     public int diameterOfBinaryTree(TreeNode root) {
         dfs(root);
-        return max-2;
+        return max;
     }
 }
