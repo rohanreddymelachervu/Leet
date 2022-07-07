@@ -10,8 +10,7 @@ class Solution {
                     counter++;
                 }else{
                     counter=0;
-                    return sb.toString();
-                    
+                    return sb.toString();   
                 }
             }
             if(counter==strs.length-1){
