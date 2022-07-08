@@ -1,13 +1,18 @@
 class Solution {
+    int i=0; //(()(()))
     public int scoreOfParentheses(String s) {
-        Stack<Integer> stack=new Stack<>();
         int score=0;
-        for(char c : s.toCharArray()){
-            if(c=='('){
-                stack.push(score);
-                score=0;
+        while(i<s.length()){
+            char first=s.charAt(i); i++;
+            if(first=='('){
+                if(s.charAt(i)==')'){
+                    score++;
+                    i++;
+                }else{
+                    score=score + 2*scoreOfParentheses(s);
+                }
             }else{
-                score=stack.pop() + Math.max(score*2,1);
+                return score;
             }
         }
         return score;
