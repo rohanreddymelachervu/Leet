@@ -13,7 +13,7 @@ class Solution {
         char c=s.charAt(index);
         if(Character.isDigit(c)){
             sb.append(c);
-            backtrack(result,new StringBuilder(sb),index+1,s);
+            backtrack(result,sb,index+1,s);
         }else{
             sb.append(Character.toLowerCase(c));
             backtrack(result,new StringBuilder(sb),index+1,s);
