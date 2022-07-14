@@ -23,7 +23,7 @@ class Solution {
         return Math.max(left,right);
     }
     public int diameterOfBinaryTree(TreeNode root) {
-        dfs(root);
+        int l=dfs(root);
         return max;
     }
 }
