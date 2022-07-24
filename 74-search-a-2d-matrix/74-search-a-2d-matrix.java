@@ -12,7 +12,7 @@ class Solution {
                 break;
             }
         }
-        if(!(top<=bot)) return false;
+        if(top>bot) return false;
         int row=(top+bot)/2;
         int l=0, r=columns-1;
         while(l<=r){
