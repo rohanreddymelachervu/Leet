@@ -24,11 +24,10 @@ class Solution {
             root.left=null;
         }
         if(right==null && left!=null) return left;
-        if(right==null && left==null) return root;
+        if(left==null && right==null) return root;
         else return right;
-        
     }
     public void flatten(TreeNode root) {
         root=dfs(root);
-    }    
+    }
 }
