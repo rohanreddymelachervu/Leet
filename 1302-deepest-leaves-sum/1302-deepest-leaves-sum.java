@@ -14,21 +14,28 @@
  * }
  */
 class Solution {
+    int result=0;
+    private void dfs2(TreeNode root,int maxDepth){
+        if(root==null) return;
+        if(maxDepth==1 && root.right==null && root.left==null) {
+            System.out.print(root.val);
+            result+=root.val;
+            return;
+        }
+        dfs2(root.left,maxDepth-1);
+        dfs2(root.right,maxDepth-1);
+    }
+    private int dfs(TreeNode root){
+        if(root==null) return 0;
+        int left=dfs(root.left)+1;
+        int right=dfs(root.right)+1;
+        return Math.max(left,right);
+    }
     public int deepestLeavesSum(TreeNode root) {
         if(root==null) return 0;
-        Queue<TreeNode> q=new LinkedList<>();
-        q.add(root);
-        int tempSum=0;
-        while(!q.isEmpty()){
-            int size=q.size();
-            tempSum=0;
-            for(int i=0;i<size;i++){
-                TreeNode curr=q.poll();
-                tempSum+=curr.val;
-                if(curr.left!=null) q.add(curr.left);
-                if(curr.right!=null) q.add(curr.right);
-            }
-        }
-        return tempSum;
+        int maxDepth=dfs(root); 
+        //System.out.print(maxDepth);
+        dfs2(root,maxDepth);
+        return result;
     }
 }
