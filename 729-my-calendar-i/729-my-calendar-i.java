@@ -1,10 +1,14 @@
 class MyCalendar {
-    private List<int[]> books=new ArrayList<>();
+    List<List<Integer>> books;
+    public MyCalendar() {
+        books=new ArrayList<>();        
+    }
+    
     public boolean book(int start, int end) {
-        for(int[] b : books){
-            if(Math.max(b[0],start)<Math.min(b[1],end)) return false;
+        for(List<Integer> b : books){
+            if(Math.max(b.get(0),start)<Math.min(b.get(1),end)) return false;
         }
-        books.add(new int[]{start,end});
+        books.add(new ArrayList<>(Arrays.asList(start,end)));
         return true;
     }
 }
