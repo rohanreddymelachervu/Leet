@@ -1,23 +1,23 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
+        int[] s1Hash=new int[26];
+        int[] s2Hash=new int[26];
         if(s1.length()>s2.length()) return false;
-        int s1map[]=new int[26];
-        int s2map[]=new int[26];
-        for(int i=0;i<s1.length();i++){
-        s1map[s1.charAt(i)-'a']++;
-        s2map[s2.charAt(i)-'a']++;    
+        Arrays.fill(s1Hash,0); Arrays.fill(s2Hash,0);
+        for(char s : s1.toCharArray()){
+            s1Hash[s-'a']++;
         }
-        for(int i=s1.length();i<s2.length();i++){
-            if(match(s1map,s2map)) return true;
-            s2map[s2.charAt(i)-'a']++;
-            s2map[s2.charAt(i-s1.length())-'a']--;
+        int left=0, right=s1.length()-1;
+        for(int i=left;i<=right;i++){
+            s2Hash[s2.charAt(i)-'a']++;   
         }
-        return match(s1map,s2map);
-    }
-    static boolean match(int s1map[],int s2map[]){
-        for(int i=0;i<26;i++){
-            if(s1map[i]!=s2map[i]) return false;
+        while(right<s2.length()){
+            if(Arrays.equals(s1Hash,s2Hash)) return true;
+            s2Hash[s2.charAt(left)-'a']--;
+            right++;
+            left++;
+            if(right<s2.length()) s2Hash[s2.charAt(right)-'a']++;
         }
-        return true;
+        return false;
     }
 }
