@@ -9,10 +9,6 @@ class Solution {
                 }
             }
         }
-        int max=0;
-        for(int i=0;i<LIS.length;i++){
-            max=Math.max(max,LIS[i]);
-        }
-        return max;
+        return Arrays.stream(LIS).max().getAsInt();
     }
 }
