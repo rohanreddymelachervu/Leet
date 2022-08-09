@@ -4,7 +4,7 @@ class Solution {
         for(char c : s.toCharArray()){
             if(c=='c'){
                 if(stack.size()>=2 && stack.pop()=='b' && stack.pop()=='a'){
-                    
+                    continue;
                 }else{
                     return false;
                 }
