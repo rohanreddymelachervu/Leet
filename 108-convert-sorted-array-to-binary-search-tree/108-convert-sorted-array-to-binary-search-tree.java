@@ -21,9 +21,9 @@ class Solution {
     private TreeNode constructTree(int[] nums,int left,int right){
         if(left>right) return null;
         int mid=(left+right)/2;
-        TreeNode newNode=new TreeNode(nums[mid]);
-        newNode.left=constructTree(nums,left,mid-1);
-        newNode.right=constructTree(nums,mid+1,right);
-        return newNode;
+        TreeNode root=new TreeNode(nums[mid]);
+        root.left=constructTree(nums,left,mid-1);
+        root.right=constructTree(nums,mid+1,right);
+        return root;
     }
 }
