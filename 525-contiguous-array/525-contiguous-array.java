@@ -6,11 +6,9 @@ class Solution {
             sum += (nums[i]==0) ? -1 : 1;
             if(sum==0){
                 max=Math.max(max, i+1);
-            }
-            else if(map.containsKey(sum)){
-                max=Math.max(i-map.get(sum), max);
-            }
-            else{
+            }else if(map.containsKey(sum)){
+                max=Math.max(max, i-map.get(sum));
+            }else{
                 map.put(sum,i);
             }
         }
