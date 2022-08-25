@@ -2,7 +2,7 @@ class Solution {
     public String countAndSay(int n) {
         if(n == 1) return "1";
         String res = countAndSay(n-1);
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         int left = 0, right = 0;
         while(right < res.length()){
             int counter = 0;
@@ -10,9 +10,10 @@ class Solution {
                 counter++;
                 right++;
             }
-            ans += Integer.toString(counter) + String.valueOf(res.charAt(left));
+            ans.append(Integer.toString(counter));
+            ans.append(String.valueOf(res.charAt(left)));
             left = right;
         }
-        return ans;
+        return ans.toString();
     }
 }
