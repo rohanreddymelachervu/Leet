@@ -14,8 +14,8 @@ class Solution {
         int minJumps=10000;
         for(int i=index+1; i<=index+nums[index]; i++){
             minJumps=Math.min(minJumps, 1+helper(nums, i));
-            cache[index]=minJumps;
         }
+        cache[index]=minJumps;
         return minJumps;
     }
 }
