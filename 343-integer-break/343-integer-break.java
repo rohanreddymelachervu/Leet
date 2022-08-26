@@ -1,20 +1,16 @@
 class Solution {
     Integer[] cache;
-    public int integerBreak(int n){
+    public int helper(int n, Integer[] cache){
+        if(n==1) return 1;
+        if(cache[n]!=null) return cache[n];
+        int max=0;
+        for(int i=1; i<n; i++){
+            max=Math.max(i*helper(n-i, cache),Math.max(max, i*(n-i)));
+        }
+        return cache[n] = max;
+    }
+    public int integerBreak(int n) {
         cache=new Integer[n+1];
-        return dfs(n);
-    } 
-    private int dfs(int n){
-        if(n<2) return 0;
-        if(cache[n]!=null){
-            return cache[n];
-        }
-        int maxProductForN=0;
-        for(int i=1;i<n;i++){
-            int curMaxProduct=Math.max(dfs(n-i),n-i);
-            maxProductForN=Math.max(curMaxProduct*i,maxProductForN);
-        }
-        cache[n]=maxProductForN;
-        return maxProductForN;
+        return helper(n, cache);
     }
 }
