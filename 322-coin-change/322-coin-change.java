@@ -1,15 +1,20 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int[] dp=new int[amount+1];
-        Arrays.fill(dp, amount+1);
-        dp[0]=0;
-        for(int i=1;i<amount+1;i++){
-            for(int c : coins){
-                if((i-c)>=0){
-                    dp[i] = Math.min(dp[i], 1+dp[i-c]);
-                }
-            }
+        Integer[][] dp=new Integer[coins.length+1][amount+1];
+        int ans=helper(coins.length, coins, amount, dp);
+        return ans == (int)1e9 ? -1 : ans;
+    }
+    public int helper(int ind, int[] coins, int amount, Integer[][] dp){
+        if(ind==0 || amount==0){
+            return amount==0 ? 0 : (int)1e9;
         }
-        return (dp[amount]!=amount+1) ? dp[amount] : -1;
+        int min1=(int)1e9;
+        int min2=(int)1e9;
+        if(dp[ind][amount]!=null) return dp[ind][amount];
+        if(amount-coins[ind-1]>=0){
+            min1=helper(ind, coins, amount-coins[ind-1], dp)+1;
+        }
+        min2=helper(ind-1, coins, amount, dp);
+        return dp[ind][amount] = Math.min(min1, min2);
     }
 }
