@@ -1,25 +1,27 @@
 class Solution {
     public List<String> letterCasePermutation(String s) {
         List<String> result=new ArrayList<>();
-        StringBuilder sb=new StringBuilder();
-        backtrack(result,sb,0,s);
+        backtrack(result, s, new StringBuilder(), 0);
         return result;
     }
-    private void backtrack(List<String> result,StringBuilder sb,int index,String s){
-        if(index==s.length()){
-            result.add(sb.toString());
+    public void backtrack(List<String> result, String s, StringBuilder sb, int ind){
+        if(ind==s.length()){
+            StringBuilder copy=new StringBuilder(sb);
+            result.add(copy.toString());
             return;
         }
-        char c=s.charAt(index);
-        if(Character.isDigit(c)){
-            sb.append(c);
-            backtrack(result,sb,index+1,s);
-        }else{
-            sb.append(Character.toLowerCase(c));
-            backtrack(result,new StringBuilder(sb),index+1,s);
+        char curr=s.charAt(ind);
+        if(Character.isDigit(curr)){
+            sb.append(curr);
+            backtrack(result, s, sb, ind+1);
             sb.deleteCharAt(sb.length()-1);
-            sb.append(Character.toUpperCase(c));
-            backtrack(result,new StringBuilder(sb),index+1,s);
+        }else{
+            sb.append(Character.toLowerCase(curr));
+            backtrack(result, s, sb, ind+1);
+            sb.deleteCharAt(sb.length()-1);
+            sb.append(Character.toUpperCase(curr));
+            backtrack(result, s, sb, ind+1);
+            sb.deleteCharAt(sb.length()-1);
         }
     }
 }
