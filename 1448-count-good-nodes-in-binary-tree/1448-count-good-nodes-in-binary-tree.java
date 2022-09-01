@@ -14,29 +14,28 @@
  * }
  */
 class Solution {
-    int count=1;
-    private void dfs(TreeNode root,int prev){
+    int result=1;
+    public void dfs(TreeNode root, int prev){
         if(root==null) return;
         if(root.left!=null){
-            if(root.left.val>=prev){
-                count++;
-                dfs(root.left,root.left.val);
-            }else{
-                dfs(root.left,prev);
+            if(root.left.val >= prev){
+                result++;
+                dfs(root.left, root.left.val);
             }
+            else
+                dfs(root.left, prev);
         }
         if(root.right!=null){
-            if(root.right.val>=prev){
-                count++;
-                dfs(root.right,root.right.val);
-            }else{
-                dfs(root.right,prev);
+            if(root.right.val >= prev){
+                result++;
+                dfs(root.right, root.right.val);
             }
+            else
+                dfs(root.right, prev);
         }
     }
     public int goodNodes(TreeNode root) {
-        if(root==null) return 0;
-        dfs(root,root.val);
-        return count;
+        dfs(root, root.val);
+        return result;
     }
 }
