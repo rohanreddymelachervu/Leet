@@ -14,20 +14,13 @@
  * }
  */
 class Solution {
-    private TreeNode dfs(TreeNode root){
-        if(root==null) return null;
-        TreeNode left=dfs(root.left);
-        TreeNode right=dfs(root.right);
-        if(left!=null){
-            left.right=root.right;
-            root.right=root.left;
-            root.left=null;
-        }
-        if(right==null && left!=null) return left;
-        if(left==null && right==null) return root;
-        else return right;
-    }
+    TreeNode prev=null;
     public void flatten(TreeNode root) {
-        root=dfs(root);
+        if(root==null) return;
+        flatten(root.right);
+        flatten(root.left);
+        root.right=prev;
+        root.left=null;
+        prev=root;
     }
 }
