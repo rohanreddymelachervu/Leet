@@ -17,21 +17,20 @@ class Solution {
         }
         ListNode second=slow.next;
         slow.next=null;
-        ListNode prev=null;
+        ListNode prev=null, next=null;
         while(second!=null){
-            ListNode temp=second.next;
+            next=second.next;
             second.next=prev;
             prev=second;
-            second=temp;
+            second=next;
         }
-        second=prev;
-        ListNode first=head;
+        second=prev; ListNode first=head;
         while(second!=null){
-            ListNode temp1=first.next, temp2=second.next;
+            ListNode firstNext=first.next, secondNext=second.next;
             first.next=second;
-            second.next=temp1;
-            first=temp1;
-            second=temp2;
+            second.next=firstNext;
+            first=firstNext;
+            second=secondNext;
         }
     }
 }
