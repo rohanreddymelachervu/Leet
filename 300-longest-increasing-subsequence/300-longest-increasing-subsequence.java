@@ -1,18 +1,16 @@
 class Solution {
-    public int helper(int ind, int prev, int[] nums, Integer[][] dp){
-        if(ind==nums.length){
-            return 0;
-        }
+    private int f(int ind, int prev, int n, int[] nums, Integer[][] dp){
+        if(ind==n) return 0;
+        int notTake = (int)(-1e9), take = (int)(-1e9);
         if(dp[ind][prev+1]!=null) return dp[ind][prev+1];
-        int nonTake = helper(ind+1, prev, nums, dp);
-        int take = 0;
-        if(prev==-1 || nums[ind]>nums[prev]){
-            take = 1 + helper(ind+1, ind, nums, dp);
+        notTake = 0 + f(ind+1, prev, n, nums, dp);
+        if(prev==-1 || nums[ind] > nums[prev]){
+            take = 1 + f(ind+1, ind, n, nums, dp);
         }
-        return dp[ind][prev+1] = Math.max(nonTake, take);
+        return dp[ind][prev+1] = Math.max(take, notTake);
     }
     public int lengthOfLIS(int[] nums) {
-        Integer[][] dp=new Integer[nums.length][nums.length+1];
-        return helper(0, -1, nums, dp);
+        Integer[][] dp = new Integer[nums.length+1][nums.length+1];
+        return f(0, -1, nums.length, nums, dp);    
     }
 }
