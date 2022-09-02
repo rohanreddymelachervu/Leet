@@ -9,6 +9,13 @@ class Solution {
     }
     public int rob(int[] nums) {
         Integer[] dp = new Integer[nums.length];
-        return f(nums.length-1, nums, dp);
+        dp[0]=nums[0];
+        for(int ind=1; ind<nums.length; ind++){
+            int take=nums[ind];
+            if(ind>1)  take += dp[ind-2];
+            int nonTake = 0 + dp[ind-1];
+            dp[ind] = Math.max(take, nonTake);
+        }
+        return dp[nums.length-1];
     }
 }
