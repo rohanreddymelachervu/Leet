@@ -1,9 +1,9 @@
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        int small=Integer.MAX_VALUE, big=Integer.MAX_VALUE;
+        int first=Integer.MAX_VALUE, second=Integer.MAX_VALUE;
         for(int n : nums){
-            if(n<=small) small=n;
-            else if(n<=big) big=n;
+            if(n <= first) first=n;
+            else if(n <= second) second=n;
             else return true;
         }
         return false;
