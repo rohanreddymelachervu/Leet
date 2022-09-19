@@ -23,12 +23,12 @@ class Solution {
             int size=q.size();
             TreeNode rightSide=null;
             for(int i=0; i<size; i++){
-                TreeNode curr=q.poll();
+                TreeNode curr=q.remove();
                 rightSide=curr;
                 if(curr.left!=null) q.add(curr.left);
                 if(curr.right!=null) q.add(curr.right);
             }
-            if(rightSide!=null) result.add(rightSide.val);
+            result.add(rightSide.val);
         }
         return result;
     }
