@@ -7,4 +7,4 @@ class Solution:
                 mappings.get(sorted_s).append(s)
             else:
                 mappings[sorted_s] = [s]
-        return (res := [val for val in mappings.values()])
+        return [val for val in mappings.values()]
