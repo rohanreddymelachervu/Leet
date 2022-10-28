@@ -2,8 +2,7 @@ class Solution {
     private int f(int ind, int[] nums, Integer[] dp){
         if(ind == 0){
             return nums[ind];
-        }
-        if(ind < 0){
+        }if(ind < 0){
             return 0;
         }
         if(dp[ind]!=null){
