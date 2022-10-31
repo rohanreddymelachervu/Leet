@@ -7,7 +7,7 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if root is None:
+        if not root:
             return None
         if root == p or root == q:
             return root
@@ -15,4 +15,4 @@ class Solution:
         right = self.lowestCommonAncestor(root.right, p, q)
         if left and right:
             return root
-        return left if right is None else right
+        return left if not right else right
