@@ -6,9 +6,8 @@ class StockSpanner {
     
     public int next(int price) {
         int span = 1;
-        while(!stack.isEmpty() && stack.peek().getKey() <= price){
-            span += stack.peek().getValue();
-            stack.pop();
+        while(!stack.isEmpty() && price >= stack.peek().getKey()){
+            span += stack.pop().getValue();
         }
         stack.push(new Pair<>(price, span));
         return span;
